@@ -5,9 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="module" src="key-board-element.js"></script>
   <title>Keyboard</title>
+  <style>
+    
+    .key {
+      width: 7%;
+      aspect-ratio: 1;
+      display: inline-block;
+      border: 1px solid black;
+      position: relative;
+      text-align:  center;
+    }
+
+    .key-content {
+      color: red;
+      display: inline;    
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform:  translate(-50%, -50%);
+    }
+
+    .shift-pressed .shift {
+      display: block;
+    }
+
+    .shift-pressed .no-shift {
+      display: none;
+    }
+
+    .shift {
+      display: none;
+    }
+
+    .key-down {
+      background-color: #ff0000;
+    }
+
+  </style>
 </head>
 <body>
 
-<key-board></key-board>
+<key-board id="key_board"></key-board>
+<div id="key_out"></div>
+
+<script>
+  key_board.addEventListener('KEY_EVENT', function(e){
+    key_out.innerText = e.detail.key
+  });
+
+</script>
 </body>
 </html>
