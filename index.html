@@ -8,10 +8,16 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@900&display=swap');
 
+    :root {
+      --foreground-color: rgba(255,255,255,1);
+      --active-background-color:  rgba(255,40,40,1);
+      --background-color: rgba(0,0,0,1);
+    }
+
     body {
       font-family: 'Source Code Pro', monospace;
-      background-color: black;
-      color: white;
+      background-color: var(--background-color);
+      color: var(--foreground-color);
     }
 
     key-board {
@@ -21,7 +27,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      opacity: 0.5;
+      opacity: 0.8;
       margin-left: 3vw;
     }
 
@@ -37,7 +43,7 @@
     }
 
     .key-content {
-      color: white;
+      color: var(--foreground-color);
       display: inline;    
       position: absolute;
       left: 50%;
@@ -62,10 +68,9 @@
     }
 
     .key-down {
-      background-color: #2d2d2d;
-      color: white;
+      background-color: var(--active-background-color);
+      color: var(--foreground-color);
       box-shadow: 3px 3px 3px grey inset;
-
     }
 
     .row-1 {
