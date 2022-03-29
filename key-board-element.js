@@ -2,7 +2,7 @@
 
 
 class KeyBoardElement extends HTMLElement {
-  symbols = `~!@#$%^&*()_+-=[]\\{}|;':",./<>?`.split('')
+  symbols = `!@#$%^&*()_+-=[]\\{}|;':",./<>?`.split('')
   row_1 = `1234567890-=`.split('')
   row_2 = `qwertyuiop[]\\`.split('')
   row_3 = `asdfghjkl;'`.split('')
@@ -41,9 +41,10 @@ class KeyBoardElement extends HTMLElement {
     }
     try {
       this.querySelector(`.key-${e.key}`).classList.remove('key-down')
-    }catch(e){
+    }catch(err){
       if(this.symbols.indexOf(e.key) > -1){
-        console.log('symbol key up')
+        this.querySelector(`.key-symbol-${this.symbols.indexOf(e.key)}`)
+          .classList.remove('key-down')
       }
     }
   }
@@ -53,7 +54,8 @@ class KeyBoardElement extends HTMLElement {
       this.querySelector(`.key-${e.key}`).classList.add('key-down')
     } catch (err){
       if(this.symbols.indexOf(e.key) > -1){
-        console.log('symbol key down')
+        this.querySelector(`.key-symbol-${this.symbols.indexOf(e.key)}`)
+          .classList.add('key-down')
       }
     }
 
@@ -129,7 +131,7 @@ class KeyBoardElement extends HTMLElement {
   generateKeyboardGraphic(){
     this.all_rows.forEach((row, index) => {
       const row_el = document.createElement('div');
-      row_el.classList.add(`row-${index}`);
+      row_el.classList.add(`row-${index}`, 'row');
 
       if(index < 4){
         row_el.classList.add('no-shift')
@@ -139,8 +141,8 @@ class KeyBoardElement extends HTMLElement {
 
       row.forEach((c,i) => {
         const key_el = document.createElement('div');
-        if(this.row_5.indexOf(c) > -1){
-          key_el.classList.add(`c-${i}`, `key`, `key-${c}`);
+        if(this.symbols.indexOf(c) > -1){
+          key_el.classList.add(`c-${i}`, `key`, `key-symbol-${i}`);
         } else {
           key_el.classList.add(`c-${i}`, `key`, `key-${c}`);          
         }
