@@ -21,8 +21,6 @@ class KeyBoardElement extends HTMLElement {
     const index_2 = this.row_2.indexOf(e.key);
     const index_3 = this.row_3.indexOf(e.key);
     const index_4 = this.row_4.indexOf(e.key);
-    console.log(e)
-
 
     if(index_1 > -1){
       console.log('row_1', index_1);
